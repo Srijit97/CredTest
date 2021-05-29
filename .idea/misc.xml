@@ -4,19 +4,28 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/activity_main_xml_scene.xml" value="0.2548611111111111" />
+        <entry key="app/src/main/res/drawable/curved_background.xml" value="0.16447368421052633" />
         <entry key="app/src/main/res/drawable/curved_edges.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/drawable/ic_down.xml" value="0.2548611111111111" />
         <entry key="app/src/main/res/drawable/ic_money_bag.xml" value="0.15822368421052632" />
         <entry key="app/src/main/res/drawable/ic_question.xml" value="0.16447368421052633" />
+        <entry key="app/src/main/res/drawable/ic_right_arrow.xml" value="0.16447368421052633" />
+        <entry key="app/src/main/res/drawable/rounded_bg.xml" value="0.2548611111111111" />
         <entry key="app/src/main/res/drawable/seek_arc_control_selector.xml" value="0.15822368421052632" />
+        <entry key="app/src/main/res/layout/activity_launcher.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.23684210526315788" />
         <entry key="app/src/main/res/layout/dialog_exit_app.xml" value="0.2680921052631579" />
         <entry key="app/src/main/res/layout/fragment_loan_amount.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_payment_gateway.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_payment_scheme.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_payment_scheme.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_cta.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_payment_gateway_item.xml" value="0.15427631578947368" />
         <entry key="app/src/main/res/layout/layout_payment_option.xml" value="0.15427631578947368" />
         <entry key="app/src/main/res/layout/layout_payment_scheme_item.xml" value="0.2588815789473684" />
+        <entry key="app/src/main/res/xml/activity_main_xml_scene.xml" value="0.2680921052631579" />
+        <entry key="app/src/main/res/xml/xml.xml" value="0.2680921052631579" />
       </map>
     </option>
   </component>

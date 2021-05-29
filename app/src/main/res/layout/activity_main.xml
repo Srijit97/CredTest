@@ -1,78 +1,373 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
+
     <data>
         <variable
             name="vm"
             type="com.example.credtest.MainVM" />
-
-        <import type="android.view.View"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/root"
         android:layout_width="match_parent"
-        android:background="#0C151C"
         android:layout_height="match_parent"
+        app:layoutDescription="@xml/activity_main_xml_scene"
         tools:context=".MainActivity">
 
-        <ImageView
-            android:id="@+id/close_image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:src="@drawable/ic_cancel"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="@{vm.shouldShowIcons ? View.VISIBLE : View.GONE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/fragment_container"/>
+            app:fabCustomSize="34dp"
+            app:fabSize="mini"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_question"
+            app:fabCustomSize="34dp"
+            app:fabSize="mini"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_loan_amount"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/curved_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fab_close" />
+
+        <TextView
+            android:id="@+id/tv_heading_credit"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            android:letterSpacing="0.08"
+            android:text="@string/name_welcome"
+            android:textColor="@color/gray"
+            app:layout_constraintLeft_toLeftOf="@id/cl_loan_amount"
+            app:layout_constraintRight_toRightOf="@id/cl_loan_amount"
+            app:layout_constraintTop_toTopOf="@id/cl_loan_amount" />
+
+        <TextView
+            android:id="@+id/tv_helper_credit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="32dp"
+            android:lineSpacingExtra="1dp"
+            android:text="@string/helper_container_credit"
+            android:textColor="@color/darkGray"
+            app:layout_constraintLeft_toLeftOf="@id/cl_loan_amount"
+            app:layout_constraintRight_toRightOf="@id/cl_loan_amount"
+            app:layout_constraintTop_toBottomOf="@id/tv_heading_credit" />
 
         <ImageView
-            android:id="@+id/help_image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_question"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="@{vm.shouldShowIcons ? View.VISIBLE : View.GONE}"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/fragment_container"/>
+            android:id="@+id/iv_arrow_down_credit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_down"
+            android:layout_margin="24dp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="@id/cl_loan_amount"
+            app:layout_constraintRight_toRightOf="@id/cl_loan_amount"/>
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:elevation="@dimen/container_elevation"
-
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_credit"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_marginBottom="56dp"
+            android:translationZ="-1dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toTopOf="@id/cl_container_emi"
+            app:layout_constraintTop_toBottomOf="@id/tv_helper_credit" />
 
+        <com.example.credtest.utils.SeekArc
+            android:id="@+id/seek_arc"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:padding="30dp"
+            android:translationZ="1dp"
+            app:layout_constraintBottom_toBottomOf="@id/cardview_credit"
+            app:layout_constraintLeft_toLeftOf="@id/cardview_credit"
+            app:layout_constraintRight_toRightOf="@id/cardview_credit"
+            app:layout_constraintTop_toTopOf="@id/cardview_credit" />
 
+        <TextView
+            android:id="@+id/tv_loan_amt_headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/credit_amount"
+            android:textColor="@color/darkGray"
+            android:textStyle="bold"
+            android:translationZ="1dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_loan_amt"
+            app:layout_constraintLeft_toLeftOf="@id/seek_arc"
+            app:layout_constraintRight_toRightOf="@id/seek_arc" />
 
-        <EditText
-            android:id="@+id/name_text_view"
+        <TextView
+            android:id="@+id/tv_loan_amt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.06"
+            android:textColor="@color/darkGray"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:translationZ="1dp"
+            app:layout_constraintBottom_toBottomOf="@id/seek_arc"
+            app:layout_constraintLeft_toLeftOf="@id/seek_arc"
+            app:layout_constraintRight_toRightOf="@id/seek_arc"
+            app:layout_constraintTop_toTopOf="@id/seek_arc" />
+
+        <TextView
+            android:id="@+id/tv_credit_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/credit_percent"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            android:translationZ="1dp"
+            app:layout_constraintLeft_toLeftOf="@id/seek_arc"
+            app:layout_constraintRight_toRightOf="@id/seek_arc"
+            app:layout_constraintTop_toBottomOf="@id/tv_loan_amt" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_container_emi"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_margin="25dp"
-            android:hint="@string/enter_name"
-            android:text="@{vm.userName}"
-            android:imeOptions="actionDone"
-            android:inputType="textPersonName"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/curved_background"
+            android:translationZ="2dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- hidden views of Second View Starts  -->
+        <TextView
+            android:id="@+id/tv_heading_selected_emi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:alpha="0.6"
+            android:text="EMI"
+            android:textColor="@color/darkGray"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/cl_container_emi"
+            app:layout_constraintTop_toTopOf="@id/cl_container_emi" />
+
+        <TextView
+            android:id="@+id/tv_selected_emi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:alpha="0.6"
+            android:textSize="18sp"
+            android:textColor="@color/darkGray"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/tv_heading_selected_emi"
+            app:layout_constraintTop_toBottomOf="@id/tv_heading_selected_emi" />
+
+        <TextView
+            android:id="@+id/tv_heading_selected_emi_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:alpha="0.6"
+            android:text="@string/duration"
+            android:textColor="@color/darkGray"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toRightOf="@id/tv_heading_selected_emi"
+            app:layout_constraintRight_toRightOf="@id/cl_container_emi"
+            app:layout_constraintTop_toTopOf="@id/cl_container_emi" />
+
+        <TextView
+            android:id="@+id/tv_selected_emi_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:alpha="0.6"
+            android:textColor="@color/darkGray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/tv_heading_selected_emi_duration"
+            app:layout_constraintTop_toBottomOf="@id/tv_heading_selected_emi_duration" />
+
+        <TextView
+            android:id="@+id/tv_cta_first_proceed"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:gravity="center"
-            android:textColorHint="#adadad"/>
+            android:letterSpacing="0.08"
+            android:text="@string/proceed_to_emi"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:translationZ="2dp"
+            android:background="@drawable/curved_background"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="@id/cl_container_emi"
+            app:layout_constraintLeft_toLeftOf="@id/cl_container_emi"
+            app:layout_constraintRight_toRightOf="@id/cl_container_emi"
+            app:layout_constraintTop_toTopOf="@id/cl_container_emi" />
 
-        <include
-            android:id="@+id/cta_layout"
-            layout="@layout/layout_cta"
-            android:layout_height="60dp"
+        <TextView
+            android:id="@+id/tv_heading_emi"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            android:letterSpacing="0.08"
+            android:text="@string/heading_container_emi"
+            android:textColor="@color/gray"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/cl_container_emi"
+            app:layout_constraintRight_toRightOf="@id/cl_container_emi"
+            app:layout_constraintTop_toTopOf="@id/cl_container_emi" />
+
+        <TextView
+            android:id="@+id/tv_helper_emi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="32dp"
+            android:lineSpacingExtra="1dp"
+            android:text="@string/helper_container_emi"
+            android:textColor="@color/gray"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/cl_container_emi"
+            app:layout_constraintRight_toRightOf="@id/cl_container_emi"
+            app:layout_constraintTop_toBottomOf="@id/tv_heading_emi" />
+
+        <ImageView
+            android:id="@+id/iv_arrow_down_emi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_down"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="@id/cl_container_emi"
+            app:layout_constraintRight_toRightOf="@id/cl_container_emi"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_payment_plan"
             android:layout_width="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/tv_helper_emi"
+            tools:listitem="@layout/layout_payment_scheme_item" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_container_bank"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/curved_background"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_cta_second_select_bank"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:letterSpacing="0.08"
+            android:text="@string/select_bank_account"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/curved_background"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="@id/cl_container_bank"
+            app:layout_constraintLeft_toLeftOf="@id/cl_container_bank"
+            app:layout_constraintRight_toRightOf="@id/cl_container_bank"
+            app:layout_constraintTop_toTopOf="@id/cl_container_bank" />
+
+        <TextView
+            android:id="@+id/tv_heading_bank"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            android:letterSpacing="0.08"
+            android:text="@string/send_money_location"
+            android:textColor="@color/gray"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/cl_container_bank"
+            app:layout_constraintRight_toRightOf="@id/cl_container_bank"
+            app:layout_constraintTop_toTopOf="@id/cl_container_bank" />
+
+        <TextView
+            android:id="@+id/tv_helper_bank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="24dp"
+            android:lineSpacingExtra="1dp"
+            android:text="@string/helper_container_bank"
+            android:textColor="@color/darkGray"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/cl_container_bank"
+            app:layout_constraintRight_toRightOf="@id/cl_container_bank"
+            app:layout_constraintTop_toBottomOf="@id/tv_heading_bank" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_payment_gateway"
+            app:layout_constraintTop_toBottomOf="@id/tv_helper_bank"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <TextView
+            android:id="@+id/tv_start_payment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            android:gravity="center"
+            android:letterSpacing="0.08"
+            android:text="@string/proceed_to_payment"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:translationZ="2dp"
+            android:background="@drawable/curved_background"
+            android:backgroundTint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="@id/cl_container_bank"
+            app:layout_constraintStart_toStartOf="@id/cl_container_bank"
+            app:layout_constraintEnd_toEndOf="@id/cl_container_bank"
+            app:layout_constraintTop_toTopOf="@id/cl_container_bank" />
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+    
 </layout>

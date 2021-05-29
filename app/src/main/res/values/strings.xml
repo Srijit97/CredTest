@@ -1,16 +1,18 @@
 <resources>
     <string name="app_name">CredTest</string>
-    <string name="enter_name">Enter Name</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="confirm_exit">Are you sure you want to miss out on exciting rewards from Cred?</string>
-    <string name="no">No</string>
-    <string name="yes">Yes</string>
-    <string name="rate">+1.04% monthly</string>
+    <string name="name_welcome">%1$s, how much do you need?</string>
     <string name="credit_amount">Credit amount</string>
     <string name="proceed_to_emi">Proceed to EMI selection</string>
     <string name="proceed_to_payment">Proceed to payment</string>
     <string name="select_bank_account">Select your bank account</string>
     <string name="send_money_location">Where should we send the money?</string>
     <string name="get_loan">Get loan</string>
+
+    <string name="create_your_own_plan">Create your own plan</string>
+    <string name="heading_container_emi">How do you wish to repay?</string>
+    <string name="helper_container_credit">Move the dial and set any amount you need up to ₹1,00,000</string>
+    <string name="helper_container_emi">Choose one of our recommended plans or make your own</string>
+    <string name="helper_container_bank">Amount will be credited to this bank account, EMI will also be debited from this bank account</string>
+    <string name="credit_percent">@1.04% monthly</string>
+    <string name="duration">duration</string>
 </resources>

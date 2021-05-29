@@ -3,6 +3,7 @@ package com.example.credtest
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.credtest.utils.CredTestUtils
 import com.example.credtest.utils.PaymentPlanModel
 import java.time.Duration
 
@@ -15,24 +16,20 @@ class MainVM: ViewModel() {
     val paymentPlan = _paymentPlan as LiveData<PaymentPlanModel>
 
 
-    val userName = MutableLiveData<String>()
-
-
-    private val _shouldShowIcons = MutableLiveData(false)
-    val shouldShowIcons = _shouldShowIcons as LiveData<Boolean>
-
-
-
     fun setLoanAmount(amount: Int){
         _loanAmount.value = amount
+    }
+
+    fun getLoanAmount(): Int{
+        return loanAmount.value?:0
     }
 
     fun setPaymentPlan(amount: Int,duration: Int){
         _paymentPlan.value = PaymentPlanModel(amount,duration)
     }
 
-    fun reset(){
-        _loanAmount.value = 0
+    fun setUserName(name: String) {
 
     }
+
 }

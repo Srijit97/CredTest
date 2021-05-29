@@ -3,16 +3,20 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
+    <color name="blue">#222765</color>
     <color name="progressBackgroundColor">#FEE4DC</color>
     <color name="progressColor">#D5825F</color>
-    <color name="recyclerColor1">#3C2B33</color>
-    <color name="recyclerColor2">#736986</color>
-    <color name="recyclerColor3">#4B6285</color>
-    <color name="translucent">#BF000000</color>
+    <color name="charcoal">#345</color>
+    <color name="vintageBrown">#43323A</color>
+    <color name="vintageViolet">#7B728E</color>
+    <color name="vintageBlue">#556B8C</color>
+    <color name="blackBackground">#222222</color>
+    <color name="darkGray">#636363</color>
+    <color name="gray">#B3AFAF</color>
+
+    <color name="green">#73BF42</color>
 </resources>
