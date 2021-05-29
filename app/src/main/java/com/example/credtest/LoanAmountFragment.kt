@@ -60,7 +60,5 @@ class LoanAmountFragment : Fragment() {
         }
     }
 
-    companion object {
-
-    }
+    companion object
 }

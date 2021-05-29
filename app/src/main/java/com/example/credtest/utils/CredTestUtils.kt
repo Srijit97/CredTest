@@ -27,7 +27,7 @@ class CredTestUtils {
         }
 
         private val monthArray = arrayOf(3,6,9,12,15,18)
-        const val maxLoanAmount= 100000
+        private const val maxLoanAmount= 100000
         val paymentMethods =  listOf("Upi","RazorPay")
 
         const val razorpayKey ="rzp_test_MehmwvY2czKIn9"

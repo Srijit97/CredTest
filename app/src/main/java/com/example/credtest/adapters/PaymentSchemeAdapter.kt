@@ -1,6 +1,9 @@
 package com.example.credtest.adapters
 
 import android.content.Context
+import android.graphics.Typeface
+import android.text.SpannableString
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -38,8 +41,9 @@ class PaymentSchemeAdapter(
             2 -> holder.binding.cardBackground.setCardBackgroundColor(context.resources.getColor(R.color.recyclerColor3,null))
         }
 
-        holder.binding.amountText.text = paymentList[position].amount.toString()
-        holder.binding.durationText.text = "${paymentList[position].duration}"
+
+        holder.binding.amountText.text = "₹${paymentList[position].amount} /mo"
+        holder.binding.durationText.text = "for ${paymentList[position].duration} months"
 
         holder.binding.root.setOnClickListener {
             if(holder.binding.paymentCheckListener.isChecked)

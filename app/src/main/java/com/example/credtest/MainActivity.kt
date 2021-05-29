@@ -8,6 +8,7 @@ import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import com.example.credtest.databinding.ActivityMainBinding
 import com.example.credtest.utils.CredTestUtils
 import com.example.credtest.utils.ItemClickInterface
@@ -31,39 +32,26 @@ class MainActivity : AppCompatActivity(),ItemClickInterface,PaymentResultListene
     }
 
     override fun onBackPressed() {
-        if(supportFragmentManager.backStackEntryCount>0)
-            supportFragmentManager.popBackStack()
-        else
-            showExitDialog()
-    }
-
-    private fun showExitDialog() {
-        val exitDialog = Dialog(this)
-        exitDialog.setContentView(R.layout.dialog_exit_app)
-        exitDialog.setCancelable(false)
-        exitDialog.setCanceledOnTouchOutside(false)
-        exitDialog.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT)
-        exitDialog.show()
-        exitDialog.findViewById<Button>(R.id.yes_button).setOnClickListener {
-            exitDialog.dismiss()
-            super.onBackPressed()
+        val fm: FragmentManager = supportFragmentManager
+        for (frag in fm.fragments) {
+            if (frag.isVisible) {
+                val childFm: FragmentManager = frag.childFragmentManager
+                if (childFm.backStackEntryCount > 0) {
+                    childFm.popBackStack()
+                    return
+                }
+            }
         }
-
-        exitDialog.findViewById<Button>(R.id.no_button).setOnClickListener {
-            exitDialog.dismiss()
-        }
+        super.onBackPressed()
     }
 
     override fun onResume() {
         super.onResume()
 
-        binding.ctaLayout.ctaText.text = text
+        binding.ctaLayout.ctaText.text = resources.getString(R.string.get_loan)
         binding.ctaLayout.root.setOnClickListener {
             supportFragmentManager.beginTransaction().replace(binding.fragmentContainer.id,LoanAmountFragment()).addToBackStack(null).commit()
         }
-    }
-    companion object{
-        const val text = "Get loan"
     }
 
     override fun onPaymentPlanSelected(amount: Int, duration: Int) {
@@ -77,14 +65,14 @@ class MainActivity : AppCompatActivity(),ItemClickInterface,PaymentResultListene
             checkout.setImage(R.drawable.rzp_logo)
 
             val options = JSONObject()
-            options.put("name", "Merchant Name");
-            options.put("description", "Reference No. #123456");
-            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
-            options.put("theme.color", "#3399cc");
-            options.put("currency", "INR");
-            options.put("amount", "50000");//pass amount in currency subunits
-            options.put("prefill.email", "gaurav.kumar@example.com");
-            options.put("prefill.contact","9988776655");
+            options.put("name", "Merchant Name")
+            options.put("description", "Reference No. #123456")
+            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png")
+            options.put("theme.color", "#3399cc")
+            options.put("currency", "INR")
+            options.put("amount", "50000")//pass amount in currency subunits
+            options.put("prefill.email", "gaurav.kumar@example.com")
+            options.put("prefill.contact","9988776655")
 
             checkout.open(this,options)
         }
