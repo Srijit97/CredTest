@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/curved_edges.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/drawable/ic_money_bag.xml" value="0.15822368421052632" />
+        <entry key="app/src/main/res/drawable/ic_question.xml" value="0.16447368421052633" />
+        <entry key="app/src/main/res/drawable/seek_arc_control_selector.xml" value="0.15822368421052632" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/dialog_exit_app.xml" value="0.2680921052631579" />
+        <entry key="app/src/main/res/layout/fragment_loan_amount.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_payment_gateway.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_payment_scheme.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/layout_cta.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_payment_gateway_item.xml" value="0.15427631578947368" />
+        <entry key="app/src/main/res/layout/layout_payment_option.xml" value="0.15427631578947368" />
+        <entry key="app/src/main/res/layout/layout_payment_scheme_item.xml" value="0.2588815789473684" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

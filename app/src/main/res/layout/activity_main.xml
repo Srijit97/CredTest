@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="com.example.credtest.MainVM" />
+
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:background="#0C151C"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/close_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_cancel"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{vm.shouldShowIcons ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fragment_container"/>
+
+        <ImageView
+            android:id="@+id/help_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_question"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="@{vm.shouldShowIcons ? View.VISIBLE : View.GONE}"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fragment_container"/>
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:elevation="@dimen/container_elevation"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+
+        <EditText
+            android:id="@+id/name_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="25dp"
+            android:hint="@string/enter_name"
+            android:text="@{vm.userName}"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
+            android:textColorHint="#adadad"/>
+
+        <include
+            android:id="@+id/cta_layout"
+            layout="@layout/layout_cta"
+            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
